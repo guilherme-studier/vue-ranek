@@ -1,29 +1,9 @@
 # ranek
 
-## Project setup
+## Projeto Ranek
+### Projeto que faz parte da trilha de aprendizagem do curso de Vuejs da plataforma origamid: https://www.origamid.com/. O projeto consiste na criação de uma loja online utilizando os conhecimentos adquiridos no decorrer do curso, como Vue, VueX e Vue Router.
 ```
+
+## Instalação do projeto
 npm install
 ```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
