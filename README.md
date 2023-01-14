@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Ranek logo" src="src/assets/ranek.svg" width="400px" />
+  <img alt="Ranek logo" src="src/assets/ranek.svg" width="200px" />
 </p>
 
 <p align="center" fontSize="60px">
@@ -13,7 +13,7 @@
 <p align="center">
   <img alt="Layout da aplicação" width="100%" src="src/assets/screenshot-mobile.png" />
 </p>
-## 💻 Projeto
+##💻 Projeto
 
 Desenvolver uma plataforma web para compra e venda de produtos.
 
