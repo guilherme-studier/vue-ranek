@@ -13,7 +13,7 @@
 <p align="center">
   <img alt="Layout da aplicação" width="100%" src="src/assets/screenshot-mobile.png" />
 </p>
-##💻 Projeto
+###💻 Projeto
 
 Desenvolver uma plataforma web para compra e venda de produtos.
 
