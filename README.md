@@ -12,7 +12,7 @@
 
 ## Projeto
 
-Desenvolver uma plataforma web para compra e venda de produtos.
+Desenvolver uma plataforma web para compra e venda de produtos. Este é um projeto que faz parte do curso de Vue da plataforma [Origamid](https://www.origamid.com/)
 
 ### Funcionalidades
 
