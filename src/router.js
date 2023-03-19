@@ -1,23 +1,21 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Produto from "./views/Produto.vue";
-import Login from "./views/Login.vue";
-import Usuario from "./views/usuario/Usuario.vue";
-import UsuarioProdutos from "./views/usuario/UsuarioProdutos.vue";
-import UsuarioVendas from "./views/usuario/UsuarioVendas.vue";
-import UsuarioCompras from "./views/usuario/UsuarioCompras.vue";
-import UsuarioEditar from "./views/usuario/UsuarioEditar.vue";
-import PaginaNaoEncontrada from "./views/PaginaNaoEncontrada.vue";
+import { createRouter, createWebHistory } from "vue-router";
+import { defineAsyncComponent } from "vue";
 
-Vue.use(Router);
+const Home = defineAsyncComponent(() => import("./views/Home.vue"));
+const Produto = defineAsyncComponent(() => import("./views/Produto.vue"));
+const Login = defineAsyncComponent(() => import("./views/Login.vue"));
+const Usuario = defineAsyncComponent(() => import("./views/usuario/Usuario.vue"));
+const UsuarioProdutos = defineAsyncComponent(() => import("./views/usuario/UsuarioProdutos.vue"));
+const UsuarioVendas = defineAsyncComponent(() => import("./views/usuario/UsuarioVendas.vue"));
+const UsuarioCompras = defineAsyncComponent(() => import("./views/usuario/UsuarioCompras.vue"));
+const UsuarioEditar = defineAsyncComponent(() => import("./views/usuario/UsuarioEditar.vue"));
+const PaginaNaoEncontrada = defineAsyncComponent(() => import("./views/PaginaNaoEncontrada.vue"));
 
-const router = new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
+const router = createRouter({
+  history: createWebHistory(),
   routes: [
     {
-      path: "*",
+      path: "/:pathMatch(.*)*",
       component: PaginaNaoEncontrada
     },
     {
@@ -67,7 +65,7 @@ const router = new Router({
     }
   ],
   scrollBehavior() {
-    return window.scrollTo({ top: 0, behavior: "smooth" });
+    return { top: 0, behavior: "smooth" };
   }
 });
 

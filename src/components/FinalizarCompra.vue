@@ -50,8 +50,8 @@ export default {
     },
     async criarUsuario() {
       try {
-        await this.$store.dispatch("criarUsuario", this.$store.state.usuario);
-        await this.$store.dispatch("logarUsuario", this.$store.state.usuario);
+        await this.$store.dispatch("criarUsuario", this.$store?.state.usuario);
+        await this.$store.dispatch("logarUsuario", this.$store?.state.usuario);
         await this.$store.dispatch("getUsuario");
         await this.criarTransacao();
       } catch (error) {
@@ -60,7 +60,7 @@ export default {
     },
     finalizarCompra() {
       this.erros = [];
-      if (this.$store.state.login) {
+      if (this.$store?.state.login) {
         this.criarTransacao();
       } else {
         this.criarUsuario();

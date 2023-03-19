@@ -12,7 +12,7 @@ export function mapFields(options) {
     const field = [options.fields[x]];
     object[field] = {
       get() {
-        return this.$store.state[options.base][field];
+        return this.$store?.state[options.base][field];
       },
       set(value) {
         this.$store.commit(options.mutation, { [field]: value });

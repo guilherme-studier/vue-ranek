@@ -1,29 +1,30 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import PaginaCarregando from "@/components/PaginaCarregando.vue";
 import ErroNotificacao from "@/components/ErroNotificacao.vue";
 
-Vue.config.productionTip = false;
+const app = createApp(App);
 
-Vue.component("PaginaCarregando", PaginaCarregando);
-Vue.component("ErroNotificacao", ErroNotificacao);
+app.use(router);
+app.use(store);
 
-Vue.filter("numeroPreco", valor => {
-  valor = Number(valor);
-  if (!isNaN(valor)) {
-    return valor.toLocaleString("pt-BR", {
-      style: "currency",
-      currency: "BRL"
-    });
-  } else {
-    return "";
+app.component("PaginaCarregando", PaginaCarregando);
+app.component("ErroNotificacao", ErroNotificacao);
+
+app.config.globalProperties.$filters = {
+  numeroPreco(valor) {
+    valor = Number(valor);
+    if (!isNaN(valor)) {
+      return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    } else {
+      return "";
+    }
   }
-});
+};
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+app.mount("#app");

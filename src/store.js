@@ -1,25 +1,24 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import { createStore } from "vuex";
 import { api } from "@/services.js";
-Vue.use(Vuex);
 
-export default new Vuex.Store({
-  strict: true,
-  state: {
-    login: false,
-    usuario: {
-      id: "",
-      nome: "",
-      email: "",
-      senha: "",
-      cep: "",
-      rua: "",
-      numero: "",
-      bairro: "",
-      cidade: "",
-      estado: ""
-    },
-    usuario_produtos: null
+export default createStore({
+  state() {
+    return {
+      login: false,
+      usuario: {
+        id: "",
+        nome: "",
+        email: "",
+        senha: "",
+        cep: "",
+        rua: "",
+        numero: "",
+        bairro: "",
+        cidade: "",
+        estado: ""
+      },
+      usuario_produtos: null
+    };
   },
   mutations: {
     UPDATE_LOGIN(state, payload) {
@@ -32,36 +31,29 @@ export default new Vuex.Store({
       state.usuario_produtos = payload;
     },
     ADD_USUARIO_PRODUTOS(state, payload) {
-      state.usuario_produtos.unshit(payload);
+      state.usuario_produtos.unshift(payload);
     }
   },
   actions: {
-    getUsuarioProdutos(context) {
-      return api
-        .get(`/produto?usuario_id=${context.state.usuario.id}`)
-        .then(response => {
-          context.commit("UPDATE_USUARIO_PRODUTOS", response.data);
-        });
+    async getUsuarioProdutos(context) {
+      const response = await api.get(`/produto?usuario_id=${context.state.usuario.id}`);
+      context.commit("UPDATE_USUARIO_PRODUTOS", response.data);
     },
-    getUsuario(context) {
-      return api.get(`/usuario`).then(response => {
-        context.commit("UPDATE_USUARIO", response.data);
-        context.commit("UPDATE_LOGIN", true);
-      });
+    async getUsuario(context) {
+      const response = await api.get(`/usuario`);
+      context.commit("UPDATE_USUARIO", response.data);
+      context.commit("UPDATE_LOGIN", true);
     },
-    criarUsuario(context, payload) {
+    async criarUsuario(context, payload) {
       context.commit("UPDATE_USUARIO", { id: payload.email });
-      return api.post("/usuario", payload);
+      await api.post("/usuario", payload);
     },
-    logarUsuario(context, payload) {
-      return api
-        .login({
-          username: payload.email,
-          password: payload.senha
-        })
-        .then(response => {
-          window.localStorage.token = `Bearer ${response.data.token}`;
-        });
+    async logarUsuario(context, payload) {
+      const response = await api.login({
+        username: payload.email,
+        password: payload.senha
+      });
+      window.localStorage.token = `Bearer ${response.data.token}`;
     },
     deslogarUsuario(context) {
       context.commit("UPDATE_USUARIO", {
@@ -79,5 +71,6 @@ export default new Vuex.Store({
       window.localStorage.removeItem("token");
       context.commit("UPDATE_LOGIN", false);
     }
-  }
+  },
+  strict: true
 });

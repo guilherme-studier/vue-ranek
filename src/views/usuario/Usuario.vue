@@ -27,7 +27,8 @@
 
 <script>
 export default {
-  name: "Usuario",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Usuário',
   methods: {
     deslogar() {
       this.$store.dispatch("deslogarUsuario");

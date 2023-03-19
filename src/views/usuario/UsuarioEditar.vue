@@ -25,7 +25,7 @@ export default {
     atualizarUsuario() {
       this.erros = [];
       api
-        .put("/usuario", this.$store.state.usuario)
+        .put("/usuario", this.$store?.state.usuario)
         .then(() => {
           this.$store.dispatch("getUsuario");
           this.$router.push({ name: "usuario" });

@@ -48,7 +48,7 @@ export default {
       mutation: "UPDATE_USUARIO"
     }),
     mostrarDadosLogin() {
-      return !this.$store.state.login || this.$route.name === "usuario-editar";
+      return !this.$store?.state.login || this.$route.name === "usuario-editar";
     }
   },
   methods: {

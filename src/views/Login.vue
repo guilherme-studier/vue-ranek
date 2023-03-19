@@ -23,7 +23,8 @@
 import LoginCriar from "@/components/LoginCriar.vue";
 
 export default {
-  name: "Login",
+  // eslint-disable-next-line vue/multi-word-component-names
+  name: 'Login',
   components: {
     LoginCriar
   },
@@ -42,6 +43,7 @@ export default {
       this.$store
         .dispatch("logarUsuario", this.login)
         .then(response => {
+          console.log(response);
           this.$store.dispatch("getUsuario");
           this.$router.push({ name: "usuario" });
         })
